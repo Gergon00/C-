@@ -2,30 +2,31 @@
 
 int f(int x){
     if(x%3==0)
-        return 1;
-        
-    while(x>0){
-        if(x%10==3  ||x%10==6   ||x%10==9)
-            return 1;
-        x=x/10;
+        return 0;
+    else{
+    	int temp;
+    	while(x){
+    		temp=x%10;
+    		if(temp==3 || temp==6 || temp%9)
+    			return 0;
+    		x=x/10;
+    	}
+    	return 1;
     }
-    return 0;
 }
 
 int main(void){
-    int i,n,temp;    
+    int i,n;    
     scanf("%d",&n);
     
     for(i=1;i<=n;i++){
-        temp=f(i);
-        if(temp==1)
-            printf("  X ");
+        if(f(i)==1)
+            printf("%2d ", i);
         else
-            printf("%3d ",i);
-        
-        if(i%10==0)
-            printf("\n");
-    
+            printf("X ");
+			
+		if(i%10==0)
+			printf("\n");   
     }
         
     return 0;
